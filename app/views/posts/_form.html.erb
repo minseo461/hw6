@@ -1,0 +1,6 @@
+<%= form_for @post do |f| %>
+        <%= f.select :category_id, options_from_collection_for_select(@category, "id","name") %><br>
+        <%= f.text_field :name, placeholder: "닉네임을 입력하세요" %><br>
+        <%= f.text_area :contents, placeholder: "내용을 입력하세요" %><br>
+        <%= f.submit '제출' %>
+<% end %>

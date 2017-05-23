@@ -1,0 +1,58 @@
+
+
+
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+
+
+<div class='container'>
+    <div class='main'>
+     <p>himinseo</p>
+
+    </div>
+    <div class='input_form'>
+    <%= form_tag '/posts#index', :method => 'get' do%>
+      <%=text_field_tag :search, params[:search], placeholder:"검색어를 입력하세요."%>
+      <%=submit_tag "Search"%>
+    <%end%>
+    </div>
+    <div class='input_form'>
+    <%= render 'form'%>
+    </div>
+
+
+<section class="main_wrapper">
+ <% if @postsearch %>
+ <% @postsearch.each do |f| %>
+   <div class="panel panel-default">
+     <div class="panel-heading">
+       <h5 style='float: right'>CATEGORY : <%= f.category.name %></h5>
+       <h3 class="panel-title"><%= f.id %>번째 글 | <%= f.name %></h3>
+      
+     </div>
+     <div class="panel-body">
+       <h6><%= f.contents %></h6><br>
+       <p style='float:center'> </p>
+     </div>
+   </div>
+ <% end %>
+ <% end %>
+
+
+<section class="main_wrapper">
+ <% @posts.each do |f| %>
+   <div class="panel panel-default">
+     <div class="panel-heading">
+       
+       <h3 class="panel-title"><%= f.id %>번째 글 | <%= f.name %></h3>
+      
+     </div>
+     <div class="panel-body">
+       <h6><%= f.contents %></h6><br>
+       <p style='float:center'> </p>
+     </div>
+   </div>
+ <% end %>
+</section>
+</div>
